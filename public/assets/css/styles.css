@@ -1,0 +1,90 @@
+/* This file should be placed in public/css/styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom component styles using @apply */
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90 focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90 focus:ring-secondary;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-text-primary hover:bg-accent/90 focus:ring-accent;
+  }
+  
+  .btn-error {
+    @apply bg-error text-white hover:bg-error/90 focus:ring-error;
+  }
+  
+  .btn-outline {
+    @apply border border-border bg-transparent text-text-primary hover:bg-hover focus:ring-primary;
+  }
+  
+  .btn-text {
+    @apply bg-transparent text-primary hover:bg-hover focus:ring-primary;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-surface rounded-lg shadow-elevation-1 overflow-hidden;
+  }
+  
+  .card-header {
+    @apply px-6 py-4 border-b border-border-light;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  .card-footer {
+    @apply px-6 py-4 border-t border-border-light;
+  }
+  
+  /* Form input styles */
+  .form-input {
+    @apply w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-text-secondary mb-1;
+  }
+  
+  .form-error {
+    @apply text-error text-sm mt-1;
+  }
+  
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-primary/10 text-primary;
+  }
+  
+  .badge-secondary {
+    @apply bg-secondary/10 text-secondary;
+  }
+  
+  .badge-accent {
+    @apply bg-accent/10 text-text-primary;
+  }
+  
+  .badge-error {
+    @apply bg-error/10 text-error;
+  }
+}
