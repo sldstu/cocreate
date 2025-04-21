@@ -376,3 +376,61 @@ function getRoleBadge($roleId) {
             </span>';
 }
 
+/**
+ * Log user actions to the activity_logs table
+ * 
+ * @param int $user_id The user ID performing the action
+ * @param string $action Description of the action
+ * @param string $ip_address IP address (optional)
+ * @return bool True if logged successfully, false otherwise
+ */
+function logAction($user_id, $action, $ip_address = null) {
+    try {
+        $database = new Database();
+        $conn = $database->getConnection();
+        
+        // Get IP address if not provided
+        if ($ip_address === null) {
+            $ip_address = $_SERVER['REMOTE_ADDR'] ?? 'Unknown';
+        }
+        
+        // Check if activity_logs table exists
+        $tableExists = false;
+        try {
+            $checkTable = $conn->query("SHOW TABLES LIKE 'activity_logs'");
+            $tableExists = ($checkTable->rowCount() > 0);
+        } catch (PDOException $e) {
+            // Table doesn't exist
+            $tableExists = false;
+        }
+        
+        // Create table if it doesn't exist
+        if (!$tableExists) {
+            $createTableSQL = "CREATE TABLE IF NOT EXISTS `activity_logs` (
+                `log_id` int(11) NOT NULL AUTO_INCREMENT,
+                `user_id` int(11) NOT NULL,
+                `action` text NOT NULL,
+                `ip_address` varchar(45) DEFAULT NULL,
+                `created_at` timestamp NULL DEFAULT current_timestamp(),
+                PRIMARY KEY (`log_id`),
+                KEY `user_id` (`user_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+            
+            $conn->exec($createTableSQL);
+        }
+        
+        // Insert log entry
+        $query = "INSERT INTO activity_logs (user_id, action, ip_address, created_at) 
+                  VALUES (?, ?, ?, NOW())";
+        $stmt = $conn->prepare($query);
+        
+        $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(2, $action, PDO::PARAM_STR);
+        $stmt->bindParam(3, $ip_address, PDO::PARAM_STR);
+        
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Error logging action: " . $e->getMessage());
+        return false;
+    }
+}

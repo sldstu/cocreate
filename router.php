@@ -162,14 +162,19 @@ $_SESSION['last_page'] = $page;
 $file_to_include = $allowed_pages[$page];
 
 // Handle AJAX requests
-if (isset($_GET['ajax']) && $_GET['ajax'] === 'true') {
+if (
+    (isset($_GET['ajax']) && $_GET['ajax'] === 'true') ||
+    isset($_GET['ajax_action']) // detect ajax_action param
+) {
     if (file_exists($file_to_include)) {
         include_once $file_to_include;
     } else {
-        echo "Error: File not found.";
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'File not found.']);
     }
     exit(); // Stop further execution for AJAX requests
 }
+
 
 ob_end_flush(); // Flush the buffered output after headers
 
