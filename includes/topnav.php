@@ -102,8 +102,8 @@ if ($roleId == ROLE_ADMIN) {
             <div class="relative">
                 <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
                     <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-200">
-                        <?php if (!empty($currentUser['profile_image'])): ?>
-                            <img src="<?php echo htmlspecialchars($currentUser['profile_image']); ?>" alt="Profile" class="w-full h-full object-cover">
+                        <?php if (!empty($profile['profile_image'])): ?>
+                            <img src="<?php echo htmlspecialchars($profile['profile_image']); ?>" alt="Profile Image" class="w-24 h-24 rounded-full object-cover mb-4">
                         <?php else: ?>
                             <div class="w-full h-full flex items-center justify-center" style="background-color: #4285F4; color: white;">
                                 <span><?php echo strtoupper(substr($currentUser['username'] ?? 'U', 0, 1)); ?></span>

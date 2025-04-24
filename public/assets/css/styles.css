@@ -88,3 +88,65 @@
     @apply bg-error/10 text-error;
   }
 }
+
+/* Dropdown styling - Fix transparent backgrounds */
+select, 
+select option,
+.dropdown-menu,
+.filter-dropdown,
+[role="listbox"],
+[role="menu"] {
+  background-color: var(--color-dropdown-bg) !important;
+}
+
+/* Option styling fixes */
+option {
+  background-color: var(--color-option-bg) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Google card style */
+.google-card {
+  background-color: var(--color-card);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+/* Task board drag and drop styles */
+.task-ghost {
+    opacity: 0.6;
+    background: #f0f0f0;
+    border: 1px dashed #999 !important;
+}
+
+.task-chosen {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+    z-index: 100;
+}
+
+.task-drag {
+    cursor: grabbing !important;
+}
+
+.task-list {
+    min-height: 100px; /* Ensure empty columns are still droppable */
+    padding-bottom: 10px;
+}
+
+.task-card.updating {
+    position: relative;
+}
+
+.task-card.updating::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" fill="none" stroke="%23007bff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></circle></svg>') center no-repeat;
+    background-size: 50px;
+    border-radius: 0.25rem;
+    z-index: 10;
+}

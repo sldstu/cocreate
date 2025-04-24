@@ -11,6 +11,10 @@
   --color-surface: #FFFFFF;
   --color-background: #F8F9FA;
   --color-background-variant: #F1F3F4;
+  --color-input-bg: #FFFFFF;    /* Input background */
+  --color-card: #FFFFFF;        /* Card background */
+  --color-dropdown-bg: #FFFFFF; /* Dropdown menu background */
+  --color-option-bg: #FFFFFF;   /* Option background in dropdowns */
   
   /* Text colors */
   --color-text-primary: #202124;
@@ -86,6 +90,10 @@
   --color-surface: #202124;
   --color-background: #121212;
   --color-background-variant: #2D2E30;
+  --color-input-bg: #202124;    /* Input background */
+  --color-card: #202124;        /* Card background */
+  --color-dropdown-bg: #202124; /* Dropdown menu background */
+  --color-option-bg: #202124;   /* Option background in dropdowns */
   
   --color-text-primary: #E8EAED;
   --color-text-secondary: #9AA0A6;

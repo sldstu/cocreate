@@ -1,0 +1,90 @@
+===== DEBUG LOG: 2025-04-24 12:12:23 =====
+Request Method: POST
+Request URL: /ems-cc/views/lead/php/debug.php
+POST Data: 
+Array
+(
+    [action] => create_task
+    [title] => hakdokkk
+    [status] => to_do
+    [priority] => medium
+)
+
+===== TASK HANDLER LOG: 2025-04-24 12:34:50 =====
+Action: create_task
+Creating task: hakdokkk
+Status: to_do, Priority: medium
+Task creation failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'department_id' in 'INSERT INTO'
+Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'department_id' in 'INSERT INTO'
+Trace: #0 C:\xampp\htdocs\ems-cc\views\lead\php\task_handler.php(145): PDOStatement->execute()
+#1 C:\xampp\htdocs\ems-cc\views\lead\php\task_handler.php(54): createTask(Object(PDO), 'C:\\xampp\\htdocs...')
+#2 {main}
+===== TASK HANDLER LOG: 2025-04-24 12:34:54 =====
+Action: create_task
+Creating task: hakdokkk
+Status: to_do, Priority: medium
+Task creation failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'department_id' in 'INSERT INTO'
+Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'department_id' in 'INSERT INTO'
+Trace: #0 C:\xampp\htdocs\ems-cc\views\lead\php\task_handler.php(145): PDOStatement->execute()
+#1 C:\xampp\htdocs\ems-cc\views\lead\php\task_handler.php(54): createTask(Object(PDO), 'C:\\xampp\\htdocs...')
+#2 {main}
+===== TASK HANDLER LOG: 2025-04-24 12:40:51 =====
+Action: create_task
+Creating task: hakdok
+Status: to_do, Priority: medium
+Task created successfully with ID: 1
+===== TASK HANDLER LOG: 2025-04-24 13:01:18 =====
+Action: create_task
+Creating task: hakkdkd
+Status: in_progress, Priority: high
+Deadline: 2025-04-29 19:01:00
+Assigned to: 9
+Task created successfully with ID: 2
+===== TASK HANDLER LOG: 2025-04-24 17:05:52 =====
+Action: update_status
+Updating status for task ID 2 to done
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:06:00 =====
+Action: update_status
+Updating status for task ID 2 to to_do
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:06:05 =====
+Action: update_status
+Updating status for task ID 2 to in_progress
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:06:08 =====
+Action: update_status
+Updating status for task ID 1 to in_progress
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:06:10 =====
+Action: update_status
+Updating status for task ID 1 to to_do
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:06:20 =====
+Action: update_status
+Updating status for task ID 1 to in_progress
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:06:24 =====
+Action: update_status
+Updating status for task ID 1 to to_do
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:07:18 =====
+Action: create_column
+Error: Invalid action: create_column
+Trace: #0 {main}
+===== TASK HANDLER LOG: 2025-04-24 17:09:20 =====
+Action: update_status
+Updating status for task ID 1 to in_progress
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:09:23 =====
+Action: update_status
+Updating status for task ID 2 to to_do
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:19:13 =====
+Action: update_status
+Updating status for task ID 2 to in_progress
+Task status updated successfully
+===== TASK HANDLER LOG: 2025-04-24 17:37:24 =====
+Action: update_task
+Updating task ID: 2
+Task updated successfully

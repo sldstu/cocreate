@@ -1,4 +1,8 @@
 <?php
+// Prevent PHP errors from being displayed in JSON output
+error_reporting(0);
+ini_set('display_errors', 0);
+
 // Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -28,6 +32,9 @@ $user_id = $_SESSION['user_id'];
 // Handle different actions
 $action = $_GET['action'] ?? '';
 
+// Ensure all responses are JSON
+header('Content-Type: application/json');
+
 switch ($action) {
     case 'get':
         // Get notifications for the current user
@@ -47,13 +54,11 @@ switch ($action) {
                 $notification['created_at'] = date('M d, Y h:i A', strtotime($notification['created_at']));
             }
             
-            header('Content-Type: application/json');
             echo json_encode([
                 'success' => true,
                 'notifications' => $notifications
             ]);
         } catch (PDOException $e) {
-            header('Content-Type: application/json');
             echo json_encode([
                 'success' => false,
                 'message' => 'Database error: ' . $e->getMessage()
@@ -73,13 +78,11 @@ switch ($action) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $count = $result['count'] ?? 0;
             
-            header('Content-Type: application/json');
             echo json_encode([
                 'success' => true,
                 'count' => (int)$count
             ]);
         } catch (PDOException $e) {
-            header('Content-Type: application/json');
             echo json_encode([
                 'success' => false,
                 'message' => 'Database error: ' . $e->getMessage()
@@ -97,13 +100,11 @@ switch ($action) {
             $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
             $stmt->execute();
             
-            header('Content-Type: application/json');
             echo json_encode([
                 'success' => true,
                 'message' => 'All notifications marked as read'
             ]);
         } catch (PDOException $e) {
-            header('Content-Type: application/json');
             echo json_encode([
                 'success' => false,
                 'message' => 'Database error: ' . $e->getMessage()
@@ -112,7 +113,6 @@ switch ($action) {
         break;
         
     default:
-        header('Content-Type: application/json');
         echo json_encode([
             'success' => false,
             'message' => 'Invalid action'

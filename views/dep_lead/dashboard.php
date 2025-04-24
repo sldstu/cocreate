@@ -81,7 +81,8 @@ try {
 try {
     $query = "SELECT t.task_id, t.title, t.description, t.due_date, t.status, u.username as assigned_to 
               FROM tasks t
-              LEFT JOIN users u ON t.assigned_to = u.user_id
+              LEFT JOIN task_assignments ta ON t.task_id = ta.task_id
+              LEFT JOIN users u ON ta.user_id = u.user_id
               WHERE t.department_id = :department_id 
               ORDER BY t.created_at DESC LIMIT 5";
     $stmt = $conn->prepare($query);
